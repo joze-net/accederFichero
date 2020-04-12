@@ -7,7 +7,10 @@ public class AccesoFichero {
 
    
     public static void main(String[] args) {
-        AccederFichero Prueba=new AccederFichero();
+        
+        String archivo="C:\\Users\\JOZE RODRIGUEZ\\Documents\\entrevista.txt";
+        AccederFichero archivoLeer=new AccederFichero();
+        archivoLeer.LeerArchivo(archivo);
         
     }
     
