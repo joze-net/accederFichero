@@ -1,9 +1,11 @@
 
 package accesofichero;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,11 +25,54 @@ public class AccederFichero {
                 entero=archivo.read();//ya que se debe seguir leyendo el resto de caracteres se debe volver a leer dentro del ciclo
                 
             }
+            archivo.close();
         } catch (IOException ex) {
             //Logger.getLogger(AccederFichero.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("No se encontro el archivo, ocurrio un error");
         }
         
     }
+    
+    
+   public void escribirArchivo(){
+       String frase="Frase de java 2";//la frase que se ingresara al documento
+       
+        try {
+            FileWriter archivo= new FileWriter("C://Users/JOZE RODRIGUEZ/Documents/EsScribiendoDesdeJava.txt",true);//aqui ponemos la ruta de creacion del archivo y agregamos verdadero si y existe el archivo
+            
+              for(int i=0;i<frase.length();i++){
+                  
+                  archivo.write(frase.charAt(i));
+                  
+              }
+              
+              archivo.flush();//se necesita este metodo para cargar los caracteres al documento
+        } catch (IOException ex) {
+            System.out.println("A ocurrido un error");
+        }
+        
+        
+   }
+   
+   public void leerArchivoConBuffer(FileReader ruta){
+       
+       BufferedReader leerArchivo=new BufferedReader(ruta);//para leer medio bufer sr necesita el tipo de dato filereader
+       
+       String texto="";
+       
+       while(texto!=null){
+           
+           try {
+               texto=leerArchivo.readLine();//con este metodo leemos el contenido del texto y lo guardamos en n string
+               if(texto!=null){
+               System.out.println(texto);
+               }
+           } catch (IOException ex) {
+               System.out.println("a ocurrido un error");
+           }
+           
+       }
+       
+   }
     
 }
