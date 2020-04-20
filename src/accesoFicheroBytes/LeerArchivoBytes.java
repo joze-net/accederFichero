@@ -2,6 +2,8 @@
 package accesoFicheroBytes;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 
@@ -36,11 +38,30 @@ public class LeerArchivoBytes {
             }
             
             System.out.println(totalDatos);
+            copiar_archivo(arrayDatos);///pasamos los datos contenidos en el arraydatos al metodo encargado de crear una copia del archivo 
             
         }catch(IOException e)
         {
             System.out.println("A ocurrido un error");
         }
+       
+   }
+   
+   static void copiar_archivo(int datos_de_bytes[]){//metodo de clase para crear copia del archivo usando los datos pasados en bytes por medio del array
+       
+       try {
+           
+           FileOutputStream copia=new FileOutputStream("C:/users/JOZE RODRIGUEZ/pictures/3D LOGO_copia.png");//creamos el nuevo archivo copia
+           
+           for(int i=0;i<datos_de_bytes.length;i++){
+               
+               copia.write(datos_de_bytes[i]);//dentro del ciclo copiamos byte por byte en la nueva ruta
+               
+           }
+       } catch (IOException e) {
+           
+           System.out.println("No se pudo copiar el archivo");
+       }
        
    }
     
